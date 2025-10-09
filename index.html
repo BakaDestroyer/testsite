@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридические услуги - Буранов Азат Насипович | Адвокат в Нижневартовске</title>
+    <meta name="description" content="Профессиональные юридические услуги в Нижневартовске. Уголовное и административное право. Буранов Азат Насипович - опытный адвокат">
+    <meta name="keywords" content="юрист, адвокат, Нижневартовск, уголовное право, административное право">
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    
+    <!-- Оптимизация загрузки шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- Предзагрузка критических изображений -->
+    <link rel="preload" as="image" href="images/law-background2.jpg">
+    <link rel="preload" as="image" href="images/femida.png">
+    
+    <style>
+        /* Критический CSS для первого экрана */
+        header, #about { 
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        /* Индикатор загрузки */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #573E2C;
+            z-index: 9999;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            pointer-events: none;
+        }
+
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #5D4037;
+            background-color: #F8F6F2;
+        }
+        
+        /* Прозрачная шапка с анимацией уменьшения */
+        header {
+            background-color: transparent;
+            color: #FEFAF0;
+            padding: 1rem 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: rgb(87 62 44 / 95%);
+            box-shadow: 0 2px 10px rgba(87, 62, 44, 0.3);
+            padding: 0.6rem 1rem;
+        }
+
+        header.compact {
+            padding: 0.4rem 1rem;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            transition: all 0.4s ease;
+        }
+
+        header.compact .logo-section {
+            gap: 3rem;
+        }
+        
+        .logo-content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        header.compact .logo-content {
+            margin-left: 0.5rem;
+        }
+        
+        .lawyer-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #FEFAF0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+            transition: all 0.4s ease;
+        }
+
+        header.compact .lawyer-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .services-title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #D4B996;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+            letter-spacing: 0.3px;
+            transition: all 0.4s ease;
+        }
+
+        header.compact .services-title {
+            font-size: 0.9rem;
+        }
+        
+        .phone-section {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(254, 250, 240, 0.1);
+            padding: 0.7rem 1rem;
+            border-radius: 25px;
+            border: 1px solid rgba(212, 185, 150, 0.4);
+            backdrop-filter: blur(2px);
+            transition: all 0.4s ease;
+        }
+
+        header.compact .phone-section {
+            padding: 0.5rem 0.8rem;
+        }
+        
+        .phone-icon {
+            font-size: 1.2rem;
+            color: #d4b996;
+            transition: all 0.4s ease;
+        }
+
+        header.compact .phone-icon {
+            font-size: 1rem;
+        }
+        
+        .phone-number {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #FEFAF0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        header.compact .phone-number {
+            font-size: 0.9rem;
+        }
+        
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FEFAF0;
+            margin: 3px 0;
+            transition: 0.3s;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        header.compact nav ul {
+            gap: 1rem;
+        }
+        
+        nav ul li a {
+            color: #FEFAF0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        header.compact nav ul li a {
+            font-size: 0.9rem;
+        }
+        
+        nav ul li a:hover {
+            color: #D4B996;
+        }
+        
+        /* Основное содержимое */
+        main {
+            margin-top: 0;
+        }
+        
+        section {
+            padding: 3rem 1.5rem;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .container-first {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-left: 7rem;
+            width: 100%;
+        }
+
+        /* Блок 1 - О юристе с параллаксом и блюром */
+        #about {
+            background: linear-gradient(rgba(87, 62, 44, 0.5), rgba(87, 62, 44, 0.3));
+            color: #FEFAF0;
+            position: relative;
+            padding-bottom: 0;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background: url('images/law-background2.jpg') top/cover no-repeat;
+            z-index: -2;
+        }
+
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: flex-end;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            min-height: 500px;
+            padding-top: 80px;
+        }
+        
+        .femida-container {
+            flex-shrink: 0;
+            width: 700px;
+            height: 503px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            align-self: flex-end;
+        }
+        
+        .femida-image {
+            width: 615px;
+            height: 599px;
+            background: url(images/femida.png) bottom / contain no-repeat;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+            z-index: 3;
+        }
+
+        .text-container {
+            background: rgb(87 62 44 / 90%);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            min-width: 870px;
+            align-self: flex-end;
+            margin-bottom: 3rem;
+            margin-top: auto;
+            position: absolute;
+            margin-left: 49%;
+        }
+        
+        .text-container p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #D4B996;
+            border-left: 3px solid #D4B996;
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .feature-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #D4B996;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Блок 2 - Услуги в шахматном порядке */
+        #services {
+            background: linear-gradient(135deg, #F8F6F2 0%, #FEFAF0 100%);
+            color: #5D4037;
+            min-height: 100vh;
+            padding: 4rem 1.5rem;
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .services-header h2 {
+            color: #573E2C;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #573E2C 0%, #8B6B46 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #5D4037;
+            font-weight: 300;
+        }
+
+        /* Шахматная сетка услуг */
+        .services-chess {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            min-height: 400px;
+            position: relative;
+        }
+
+        /* Разделители между секциями */
+        .service-row:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: -2rem;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: rgba(87, 62, 44, 0.2);
+        }
+
+        .service-row.reverse {
+            direction: rtl;
+        }
+
+        .service-row.reverse > * {
+            direction: ltr;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            color: #573E2C;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .service-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #D4B996, #573E2C);
+            border-radius: 2px;
+        }
+
+        .service-content p {
+            color: #5D4037;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features-mini {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .service-features-mini li {
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-features-mini li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #D4B996;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .service-image {
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(87, 62, 44, 0.15);
+            transition: transform 0.4s ease;
+            position: relative;
+            transform: translateZ(0); /* Аппаратное ускорение */
+        }
+
+        .service-image:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(87, 62, 44, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-image:hover::after {
+            opacity: 1;
+        }
+        
+        /* Блок 3 - Контакты с параллаксом и блюром */
+        #contact {
+            background: linear-gradient(rgba(87, 62, 44, 0.4), rgba(87, 62, 44, 0.3));
+            color: #5D4037;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%;
+            background: url('images/contact-background.jpg') bottom/cover no-repeat;
+            z-index: -2;
+        }
+
+        .contact-blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(2px);
+            z-index: -1;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info-card {
+            background: #FEFAF0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        .contact-info-card h2 {
+            color: #573E2C;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-description {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5D4037;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #F8F6F2;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-detail:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-detail-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #573E2C;
+            width: 35px;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: #573E2C;
+            color: #FEFAF0;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #573E2C;
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .contact-btn:hover {
+            background: #FEFAF0;
+            color: #573E2C;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #573E2C;
+            color: #FEFAF0;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        /* Декоративная полоса в подвале */
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #462f21, #573E2C, #462f21);
+        }
+        
+        /* Оптимизация анимаций для пользователей с reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .service-image:hover,
+            .service-image:hover img,
+            .contact-btn:hover {
+                transform: none !important;
+            }
+        }
+        
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 968px) {
+            .logo-section {
+                gap: 2rem;
+            }
+            
+            .logo-content {
+                margin-left: 1rem;
+            }
+            
+            .phone-section {
+                padding: 0.5rem 1rem;
+            }
+            
+            .femida-container {
+                width: 200px;
+                height: 280px;
+            }
+            
+            .femida-image {
+                width: 160px;
+                height: 250px;
+            }
+            
+            .text-container {
+                max-width: 650px;
+                padding: 1.8rem;
+                /* Исправления для мобильных */
+                min-width: auto;
+                margin-left: 0;
+                position: relative;
+                align-self: center;
+            }
+
+            .service-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-row.reverse {
+                direction: ltr;
+            }
+
+            .service-image {
+                height: 250px;
+                order: -1;
+            }
+
+            .service-row:not(:last-child)::after {
+                left: 5%;
+                right: 5%;
+                bottom: -1rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info-card {
+                max-width: 100%;
+                padding: 2rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 0.6rem 1rem;
+                background-color: rgb(87 62 44 / 95%);
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .logo-content {
+                margin-left: 0;
+                order: 1;
+            }
+            
+            .phone-section {
+                order: 2;
+                justify-content: center;
+            }
+            
+            .lawyer-name {
+                font-size: 1.2rem;
+            }
+            
+            .services-title {
+                font-size: 1rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                order: 3;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgb(87 62 44 / 95%);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            nav.active {
+                max-height: 300px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(254, 250, 240, 0.2);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            main {
+                margin-top: 0;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+            
+            #about {
+                min-height: 100vh;
+                padding-bottom: 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                align-items: center;
+                min-height: auto;
+                padding-top: 70px;
+                /* Исправления для мобильных */
+                height: auto;
+            }
+            
+            .femida-container {
+                order: -1;
+                margin: 0 auto;
+                height: 220px;
+                width: auto;
+                align-self: center;
+                /* Исправления для мобильных */
+                width: 100%;
+                max-width: 300px;
+                height: 200px;
+            }
+            
+            .femida-image {
+                width: 140px;
+                height: 200px;
+                /* Исправления для мобильных */
+                width: 100%;
+                max-width: 200px;
+                height: 180px;
+                background-size: contain;
+            }
+            
+            .text-container {
+                max-width: 100%;
+                padding: 1.5rem;
+                align-self: center;
+                margin-bottom: 2rem;
+                margin-left: 0;
+                position: relative;
+                /* Исправления для мобильных */
+                min-width: auto;
+                width: 100%;
+                margin-top: 0;
+            }
+            
+            .services-header h2 {
+                font-size: 2rem;
+            }
+
+            .service-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .service-row:not(:last-child)::after {
+                left: 2%;
+                right: 2%;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .container-first {
+                margin-left: 0;
+                width: 100%;
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0.5rem;
+            }
+            
+            .lawyer-name {
+                font-size: 1.1rem;
+            }
+            
+            .services-title {
+                font-size: 0.9rem;
+            }
+            
+            .phone-number {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .text-container {
+                padding: 1.2rem;
+            }
+            
+            .feature-list li {
+                font-size: 0.9rem;
+                padding-left: 1.2rem;
+            }
+            
+            .femida-container {
+                height: 180px;
+            }
+            
+            .femida-image {
+                width: 110px;
+                height: 160px;
+            }
+
+            .contact-info-card {
+                padding: 1.5rem;
+            }
+
+            .contact-detail {
+                padding: 0.8rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: none;
+            }
+
+            .services-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-content h3 {
+                font-size: 1.4rem;
+            }
+
+            .footer-decoration {
+                height: 3px;
+            }
+
+            /* Дополнительные исправления для очень маленьких экранов */
+            .about-content {
+                padding-top: 60px;
+                gap: 1.5rem;
+            }
+
+            .femida-container {
+                height: 150px;
+                max-width: 250px;
+            }
+
+            .femida-image {
+                height: 140px;
+                max-width: 150px;
+            }
+
+            .text-container {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .text-container p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .quote {
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Дополнительные исправления для экранов меньше 375px */
+        @media (max-width: 374px) {
+            .about-content {
+                padding-top: 50px;
+            }
+
+            .femida-container {
+                height: 120px;
+                max-width: 200px;
+            }
+
+            .femida-image {
+                height: 110px;
+                max-width: 120px;
+            }
+
+            .text-container {
+                padding: 0.8rem;
+            }
+
+            .text-container p {
+                font-size: 0.85rem;
+            }
+
+            .feature-list li {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Индикатор загрузки -->
+    <div id="loading"></div>
+
+    <!-- Прозрачная шапка -->
+    <header id="mainHeader">
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="logo-content">
+                    <div class="lawyer-name">Буранов Азат Насипович</div>
+                    <div class="services-title">Юридические услуги</div>
+                </div>
+                <div class="phone-section">
+                    <span class="phone-icon">т.</span>
+                    <span class="phone-number">+7 (XXX) XXX-XX-XX</span>
+                </div>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main>
+        <!-- Блок 1: О юристе с параллаксом и блюром -->
+        <section id="about">
+            <div class="parallax-bg" id="parallaxBg"></div>
+            <div class="blur-overlay"></div>
+            <div class="container-first">
+                <div class="about-content">
+                    <div class="femida-container">
+                        <div class="femida-image"></div>
+                    </div>
+                    
+                    <div class="text-container">
+                        <p>Добрый день! Я - Буранов Азат Насипович, профессиональный юрист с более чем 15-летним опытом работы в сфере права. Моя специализация охватывает уголовное и административное законодательство.</p>
+                        
+                        <p>Моя работа строится на трех фундаментальных принципах:</p>
+                        
+                        <ul class="feature-list">
+                            <li>Детальный анализ ситуации и правовая оценка</li>
+                            <li>Разработка стратегии защиты с учетом нюансов</li>
+                            <li>Комплексное сопровождение на всех этапах</li>
+                        </ul>
+                        
+                        <p>Более 90% дел, которые я веду, заканчиваются в пользу моих клиентов. Моя цель - обеспечить реальную защиту ваших прав и интересов.</p>
+                        
+                        <div class="quote">
+                            "Право существует для защиты слабого от сильного. Моя задача - обеспечить эту защиту."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 2: Услуги в шахматном порядке -->
+        <section id="services">
+            <div class="container">
+                <div class="services-header">
+                    <h2>Профессиональные юридические услуги</h2>
+                    <div class="services-intro">
+                        Комплексный подход к решению правовых вопросов с гарантией результата. 
+                        Каждая услуга - это индивидуальная стратегия, разработанная с учетом особенностей вашего дела.
+                    </div>
+                </div>
+                
+                <div class="services-chess">
+                    <!-- Первая услуга: текст слева, картинка справа -->
+                    <div class="service-row">
+                        <div class="service-content">
+                            <h3>Уголовное право</h3>
+                            <p>Полный цикл защиты по уголовным делам любой сложности. От первичной консультации до представительства в суде высшей инстанции.</p>
+                            <ul class="service-features-mini">
+                                <li>Защита на стадии следствия</li>
+                                <li>Обжалование приговоров</li>
+                                <li>Сопровождение в апелляции</li>
+                                <li>Работа со сложными делами</li>
+                            </ul>
+                        </div>
+                        <div class="service-image">
+                            <img src="images/criminal-law.png" alt="Уголовное право" loading="lazy" width="600" height="400" style="background: linear-gradient(45deg, #573E2C, #8B6B46);">
+                        </div>
+                    </div>
+
+                    <!-- Вторая услуга: картинка слева, текст справа -->
+                    <div class="service-row reverse">
+                        <div class="service-content">
+                            <h3>Административное право</h3>
+                            <p>Защита от неправомерных действий государственных органов. Восстановление нарушенных прав и законных интересов.</p>
+                            <ul class="service-features-mini">
+                                <li>Оспаривание административных правонарушений</li>
+                                <li>Защита в спорах с госорганами</li>
+                                <li>Восстановление сроков</li>
+                                <li>Юридическое сопровождение</li>
+                            </ul>
+                        </div>
+                        <div class="service-image">
+                            <img src="images/administrative-law.png" alt="Административное право" loading="lazy" width="600" height="400" style="background: linear-gradient(45deg, #8B6B46, #D4B996);">
+                        </div>
+                    </div>
+
+                    <!-- Третья услуга: текст слева, картинка справа -->
+                    <div class="service-row">
+                        <div class="service-content">
+                            <h3>Представительство в суде</h3>
+                            <p>Профессиональное ведение дел в судах всех инстанций. Стратегический подход к каждому судебному процессу.</p>
+                            <ul class="service-features-mini">
+                                <li>Составление процессуальных документов</li>
+                                <li>Подготовка к судебным заседаниям</li>
+                                <li>Защита интересов в апелляции</li>
+                                <li>Комплексное сопровождение</li>
+                            </ul>
+                        </div>
+                        <div class="service-image">
+                            <img src="images/court-representation.png" alt="Представительство в суде" loading="lazy" width="600" height="400" style="background: linear-gradient(45deg, #D4B996, #FEFAF0);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 3: Контакты с параллаксом и блюром -->
+        <section id="contact">
+            <div class="contact-parallax-bg" id="contactParallaxBg"></div>
+            <div class="contact-blur-overlay"></div>
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="contact-info-card">
+                        <h2>Свяжитесь со мной</h2>
+                        <div class="contact-description">
+                            Мы готовы ответить на все ваши вопросы и помочь в решении юридических проблем. 
+                            Обращайтесь удобным для вас способом!
+                        </div>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">📞</span>
+                                <span>+7 (XXX) XXX-XX-XX</span>
+                            </div>
+                            
+                            <div class="contact-detail">
+                                <span class="contact-detail-icon">✉️</span>
+                                <span>info@buranov-law.ru</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-buttons">
+                            <a href="#" class="contact-btn">
+                                <i>📱</i>
+                                WhatsApp
+                            </a>
+                            <a href="#" class="contact-btn">
+                                <i>✈️</i>
+                                Telegram
+                            </a>
+                            <a href="#" class="contact-btn">
+                                <i>🏢</i>
+                                Авито
+                            </a>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem; font-style: italic; color: #573E2C;">
+                            Мы ждем вашего обращения!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-decoration"></div>
+        <div class="footer-content">
+            <p>© 2024 Буранов Азат Насипович | Юридические услуги. Все права защищены.</p>
+            <p>Обращайтесь за консультацией - вместе мы найдем решение!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Индикатор загрузки
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.transform = 'scaleX(1)';
+                setTimeout(() => loading.remove(), 500);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const parallaxBg = document.getElementById('parallaxBg');
+            const contactParallaxBg = document.getElementById('contactParallaxBg');
+            const mainHeader = document.getElementById('mainHeader');
+            
+            // Плавная прокрутка к якорям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Мобильное меню
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.toggle('active'));
+            });
+            
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                });
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('#mainNav') && !event.target.closest('#menuToggle')) {
+                    mainNav.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                }
+            });
+
+            // Оптимизированный параллакс-эффект для фонов
+            function updateParallax() {
+                if (parallaxBg) {
+                    const scrolled = window.pageYOffset;
+                    const parallaxSpeed = 0.3; // Уменьшенная скорость для производительности
+                    const yPos = -(scrolled * parallaxSpeed);
+                    parallaxBg.style.transform = `translateY(${yPos}px)`;
+                }
+                
+                if (contactParallaxBg) {
+                    const scrolled = window.pageYOffset;
+                    const contactSection = document.getElementById('contact');
+                    const contactOffset = contactSection.offsetTop;
+                    const windowHeight = window.innerHeight;
+                    
+                    const contactParallaxSpeed = 0.2; // Уменьшенная скорость
+                    const contactYPos = -((scrolled - contactOffset + windowHeight) * contactParallaxSpeed);
+                    contactParallaxBg.style.transform = `translateY(${contactYPos}px)`;
+                }
+            }
+
+            // Изменение шапки при скролле с уменьшением размера
+            function updateHeader() {
+                if (mainHeader) {
+                    const servicesSection = document.getElementById('services');
+                    const servicesOffset = servicesSection.offsetTop;
+                    
+                    if (window.scrollY > 50) {
+                        mainHeader.classList.add('scrolled');
+                    } else {
+                        mainHeader.classList.remove('scrolled');
+                    }
+                    
+                    if (window.scrollY > servicesOffset - 100) {
+                        mainHeader.classList.add('compact');
+                    } else {
+                        mainHeader.classList.remove('compact');
+                    }
+                }
+            }
+
+            // Оптимизация для плавного скролла
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        updateParallax();
+                        updateHeader();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Инициализация при загрузке
+            updateParallax();
+            updateHeader();
+        });
+    </script>
+</body>
+</html>
